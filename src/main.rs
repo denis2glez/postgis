@@ -1,9 +1,11 @@
-use postgres::{Client, Error, NoTls};
-use std::time::Duration;
-fn main() -> Result<(), Error> {
-    let mut client = Client::connect("host=localhost user=postgres", NoTls)?;
+use sqlx::postgres::PgPoolOptions;
 
-    client.is_valid(Duration::from_secs(1))?;
+#[tokio::main]
+async fn main() -> Result<(), sqlx::Error> {
+    // Create a connection pool
+    let pool = PgPoolOptions::new()
+        .connect("postgres://postgres:password@localhost/testdb")
+        .await?;
 
     Ok(())
 }
