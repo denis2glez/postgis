@@ -1,11 +1,8 @@
-use sqlx::postgres::PgPoolOptions;
+use post_gis::Result;
 
 #[tokio::main]
-async fn main() -> Result<(), sqlx::Error> {
-    // Create a connection pool
-    let pool = PgPoolOptions::new()
-        .connect("postgres://postgres:password@localhost/testdb")
-        .await?;
-
+async fn main() -> Result<()> {
+    // Just try to create a connection pool
+    post_gis::get_connection_pool().await?;
     Ok(())
 }

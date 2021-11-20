@@ -1,12 +1,8 @@
 use geozero::{wkb, ToWkt};
-use sqlx::postgres::PgPoolOptions;
-use std::env;
+use post_gis::Result;
 
-pub async fn blob_query() -> Result<(), sqlx::Error> {
-    let pool = PgPoolOptions::new()
-        .max_connections(5)
-        .connect(&env::var("DATABASE_URL").unwrap())
-        .await?;
+pub async fn blob_query() -> Result<()> {
+    let pool = post_gis::get_connection_pool().await?;
 
     let row: (Vec<u8>,) =
         sqlx::query_as("SELECT 'SRID=4326;POLYGON ((0 0, 2 0, 2 2, 0 2, 0 0))'::geometry::bytea")
@@ -20,6 +16,6 @@ pub async fn blob_query() -> Result<(), sqlx::Error> {
 }
 
 #[tokio::main]
-async fn main() -> Result<(), sqlx::Error> {
+async fn main() -> Result<()> {
     blob_query().await
 }
