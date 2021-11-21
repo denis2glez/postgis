@@ -1,5 +1,17 @@
 # postgis
 
+## Table of Contents
+- [postgis](#postgis)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [Prerequisites](#prerequisites)
+  - [Installing](#installing)
+  - [Quick check](#quick-check)
+  - [Build](#build)
+  - [Run tests](#run-tests)
+  - [Run a binary](#run-a-binary)
+  - [License](#license)
+
 ## About
 
 A collection of demos, tests, and benchmarks for exploring Rust's support of geospatial data
@@ -73,9 +85,46 @@ cargo install sqlx-cli --no-default-features --features postgres
 ```
 </details>
 
-## Usage
+## Quick check
 
-TODO:
+Quickly check the package and all of its dependencies for possible errors.
+```sh
+cargo check
+```
+
+## Build
+
+To build the application on your host machine use
+
+```sh
+cargo build
+```
+
+## Run tests
+
+Now you can run all the default tests
+
+```sh
+cargo test
+```
+or just a specific group of tests, by adding `-- <pattern>` to filter. For instance,
+
+```sh
+cargo test -- parse_wkt
+```
+
+## Run a binary
+
+To execute a specific binary you can use
+
+```sh
+cargo run --bin <bin_name>
+```
+For instance,
+
+```sh
+cargo run --bin demo_sqlx
+```
 
 ## License
 
