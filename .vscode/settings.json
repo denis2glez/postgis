@@ -5,8 +5,8 @@
             "server": "localhost",
             "port": 5432,
             "driver": "PostgreSQL",
-            "name": "testdb",
-            "database": "testdb",
+            "name": "geodb",
+            "database": "geodb",
             "username": "postgres",
             "password": "password"
         }
