@@ -73,7 +73,7 @@ cargo install sqlx-cli --no-default-features --features postgres
 <details open>
 <summary><b>Windows</b></summary>
 
-If you are using Windows, you could install all the required dependencies using the
+If you are using Windows, you could install most of the required dependencies using the
 [`winget`](https://docs.microsoft.com/en-us/windows/package-manager/winget/#production-recommended)
 CLI tool by running the following commands.
 
@@ -83,6 +83,8 @@ winget install --id PostgreSQL.PostgreSQL
 # Install sqlx-cli only for postgres
 cargo install sqlx-cli --no-default-features --features postgres
 ```
+
+After installing PostgreSQL, remember to run the "StackBuilder" utility to install the PostGIS add-on.
 </details>
 
 ## Quick check
