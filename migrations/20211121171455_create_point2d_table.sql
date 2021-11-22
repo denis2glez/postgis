@@ -1,5 +1,4 @@
--- Enables the postgis extension in the `testdb` database specified in the `.env` file.
-CREATE EXTENSION postgis;
+-- Create a table in the `geodb` database.
 CREATE TABLE point2d (
     fid SERIAL,
     intfield integer,
