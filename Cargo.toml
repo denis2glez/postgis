@@ -15,7 +15,6 @@ geos = "8.0.3"
 geojson = "0.22.2"
 geo-types = { version = "0.7.2", default-features = false }
 tokio = { version = "1.14.0", features = ["full"] }
-criterion = "0.3.5"
 flatgeobuf = "0.6.1"
 seek_bufread = "1.2.2"
 dotenv = "0.15.0"
@@ -48,7 +47,10 @@ features = [
 geo = "0.18.0"
 wkt = "0.9.2"
 
+[dev-dependencies.criterion]
+version = "0.3.5"
+features = ["html_reports", "async_tokio"]
+
 [[bench]]
-name = "geobench"
-path = "benches/geobench.rs"
+name = "geo_contains"
 harness = false
