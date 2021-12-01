@@ -21,12 +21,16 @@ processing.
 
 You need to have the following dependencies installed
 
-- [Rust](https://www.rust-lang.org/tools/install)
-- [PostgreSQL](https://www.postgresql.org/download) 
+- [Rust](https://www.rust-lang.org/tools/install).
+- [PostgreSQL](https://www.postgresql.org/download).
 - [PostGIS](https://postgis.net/install) extension.
 - SQLx's associated command-line utility [`sqlx-cli`](https://crates.io/crates/sqlx-cli).
+- [OpenCV](https://opencv.org/releases).
 
 ## Installing
+
+> The dependencies specified after `opencv` (e.g., `clang` or `llvm`) are only required to generate
+> the Rust bindings to the installed OpenCV library.
 
 <details open>
 <summary><b>Arch Linux</b></summary>
@@ -34,7 +38,7 @@ You need to have the following dependencies installed
 If you are using Arch Linux or a derivative, you could install all the required dependencies by
 running the following commands.
 ```sh
-sudo pacman -S rust postgresql postgis
+sudo pacman -S rust postgresql postgis opencv clang
 # Install sqlx-cli only for postgres
 cargo install sqlx-cli --no-default-features --features postgres
 ```
@@ -48,7 +52,7 @@ using the standard installation script. You could install all the development de
 the following commands.
 ```sh
 # sqlx-cli needs libssl-dev
-sudo apt install postgresql postgis curl libssl-dev
+sudo apt install postgresql postgis curl libssl-dev libopencv-dev clang libclang-dev
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # Install sqlx-cli only for postgres
@@ -62,7 +66,7 @@ cargo install sqlx-cli --no-default-features --features postgres
 If you are using macOS you could install all the development dependencies using [Homebrew](https://brew.sh)
 by running the following commands.
 ```sh
-brew install curl postgresql postgis
+brew install curl postgresql postgis opencv llvm
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # Install sqlx-cli only for postgres
@@ -73,13 +77,11 @@ cargo install sqlx-cli --no-default-features --features postgres
 <details open>
 <summary><b>Windows</b></summary>
 
-If you are using Windows, you could install most of the required dependencies using the
-[`winget`](https://docs.microsoft.com/en-us/windows/package-manager/winget/#production-recommended)
-CLI tool by running the following commands.
+If you are using Windows, you could install most of the required dependencies using
+[`Chocolatey`](https://chocolatey.org) by running the following commands.
 
 ```sh
-winget install --id Rustlang.Rust.MSVC
-winget install --id PostgreSQL.PostgreSQL
+choco install rust-ms postgresql opencv llvm
 # Install sqlx-cli only for postgres
 cargo install sqlx-cli --no-default-features --features postgres
 ```
