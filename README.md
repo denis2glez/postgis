@@ -6,10 +6,13 @@
   - [About](#about)
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
+  - [Setup](#setup)
   - [Quick check](#quick-check)
   - [Build](#build)
   - [Run tests](#run-tests)
   - [Run a binary](#run-a-binary)
+  - [Run an example](#run-an-example)
+  - [Run a benchmark](#run-a-benchmark)
   - [License](#license)
 
 ## About
@@ -89,6 +92,16 @@ cargo install sqlx-cli --no-default-features --features postgres
 After installing PostgreSQL, remember to run the "StackBuilder" utility to install the PostGIS add-on.
 </details>
 
+## Setup
+
+Download the zip file containing all the test data by running the script
+
+```sh
+scripts/download_data.sh
+```
+
+or if you prefer manually from the following [link](https://drive.google.com/file/d/1Vimn78opM6jMIdWoR3Hznqu2RbzrmOY5/view?usp=sharing").
+
 ## Quick check
 
 Quickly check the package and all of its dependencies for possible errors.
@@ -127,7 +140,33 @@ cargo run --bin <bin_name>
 For instance,
 
 ```sh
-cargo run --bin demo_sqlx
+cargo run --bin geo_centroid
+```
+
+## Run an example
+
+To run an example, you could run
+
+```sh
+cargo run --example <example_name>
+```
+For instance,
+
+```sh
+cargo run --example opencv_text_detection
+```
+
+## Run a benchmark
+
+To execute a micro-benchmark use
+
+```sh
+cargo bench --bench <bench_name>
+```
+For example,
+
+```sh
+cargo bench --bench geo_contains
 ```
 
 ## License
