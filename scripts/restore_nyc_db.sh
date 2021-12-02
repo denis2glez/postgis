@@ -8,15 +8,6 @@ if ! [ -x "$(command -v psql)" ]; then
     exit 1
 fi
 
-if [ ! -d data ]; then
-    mkdir data
-    # Download sample data used in the PostGIS workshop
-    curl http://s3.cleverelephant.ca/postgis-workshop-2020.zip -o workshop.zip
-    # Extract only the backup to the `data` directory
-    unzip -j workshop.zip "postgis-workshop/data/nyc_data.backup" -d data
-    rm workshop.zip
-fi
-
 # Check if a custom user has been set, otherwise default to 'postgres'
 DB_USER="${POSTGRES_USER:=postgres}"
 # Check if a custom password has been set, otherwise default to 'password'
