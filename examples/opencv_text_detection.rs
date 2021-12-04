@@ -131,7 +131,7 @@ fn main() -> Result<()> {
             3.,
             imgproc::INTER_NEAREST,
         )?;
-        highgui::imshow(win_name, &mut big_frame)?;
+        highgui::imshow(win_name, &big_frame)?;
     }
     Ok(())
 }
@@ -148,7 +148,7 @@ fn four_points_transform(frame: &Mat, vertices: &[Point2f]) -> Result<Mat> {
         ),
     ];
     let rotation_matrix =
-        imgproc::get_perspective_transform_slice(&vertices, &target_vertices, core::DECOMP_LU)?;
+        imgproc::get_perspective_transform_slice(vertices, &target_vertices, core::DECOMP_LU)?;
     let mut out = Mat::default();
     imgproc::warp_perspective(
         frame,
