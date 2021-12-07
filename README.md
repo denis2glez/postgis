@@ -29,11 +29,14 @@ You need to have the following dependencies installed
 - [PostGIS](https://postgis.net/install) extension.
 - SQLx's associated command-line utility [`sqlx-cli`](https://crates.io/crates/sqlx-cli).
 - [OpenCV](https://opencv.org/releases).
+- [TensorFlow](https://www.tensorflow.org/install) with Python support.
 
 ## Installing
 
 > The dependencies specified after `opencv` (e.g., `clang` or `llvm`) are only required to generate
 > the Rust bindings to the installed OpenCV library.
+
+> Note that TensorFlow's recommended installation is via Python's pip package manager.
 
 <details open>
 <summary><b>Arch Linux</b></summary>
@@ -41,10 +44,13 @@ You need to have the following dependencies installed
 If you are using Arch Linux or a derivative, you could install all the required dependencies by
 running the following commands.
 ```sh
-sudo pacman -S rust postgresql postgis opencv clang
+sudo pacman -S rust postgresql postgis python-tensorflow opencv clang
 # Install sqlx-cli only for postgres
 cargo install sqlx-cli --no-default-features --features postgres
 ```
+> If you have an NVIDIA GPU, instead of `python-tensorflow` you can choose the `python-tensorflow-cuda`
+> package.
+
 </details>
 
 <details open>
@@ -60,6 +66,9 @@ sudo apt install postgresql postgis curl libssl-dev libopencv-dev clang libclang
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # Install sqlx-cli only for postgres
 cargo install sqlx-cli --no-default-features --features postgres
+# Install TensorFlow
+pip install --upgrade pip
+pip install tensorflow
 ```
 </details>
 
@@ -69,11 +78,14 @@ cargo install sqlx-cli --no-default-features --features postgres
 If you are using macOS you could install all the development dependencies using [Homebrew](https://brew.sh)
 by running the following commands.
 ```sh
-brew install curl postgresql postgis opencv llvm
+brew install curl postgresql postgis python opencv llvm
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # Install sqlx-cli only for postgres
 cargo install sqlx-cli --no-default-features --features postgres
+# Install TensorFlow
+pip install --upgrade pip
+pip install tensorflow
 ```
 </details>
 
@@ -84,9 +96,12 @@ If you are using Windows, you could install most of the required dependencies us
 [`Chocolatey`](https://chocolatey.org) by running the following commands.
 
 ```sh
-choco install rust-ms postgresql opencv llvm
+choco install rust-ms postgresql python opencv llvm
 # Install sqlx-cli only for postgres
 cargo install sqlx-cli --no-default-features --features postgres
+# Install TensorFlow
+pip install --upgrade pip
+pip install tensorflow
 ```
 
 After installing PostgreSQL, remember to run the "StackBuilder" utility to install the PostGIS add-on.
