@@ -14,6 +14,7 @@ if [ ! -d $DATA_DIR ]; then
     # - alphabet_36.txt
     # - frozen_east_text_detection.pb
     # - macaque.jpg
+    # - roads.geojson
     # Since it is around 120 MiB, we need the following workaround
     FILE_ID="1Vimn78opM6jMIdWoR3Hznqu2RbzrmOY5"
     FILE_NAME="data.zip"

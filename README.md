@@ -28,6 +28,7 @@ You need to have the following dependencies installed
 - [PostgreSQL](https://www.postgresql.org/download).
 - [PostGIS](https://postgis.net/install) extension.
 - SQLx's associated command-line utility [`sqlx-cli`](https://crates.io/crates/sqlx-cli).
+- [GDAL](https://gdal.org/download.html).
 - [OpenCV](https://opencv.org/releases).
 - [TensorFlow](https://www.tensorflow.org/install) with Python support.
 
@@ -44,7 +45,7 @@ You need to have the following dependencies installed
 If you are using Arch Linux or a derivative, you could install all the required dependencies by
 running the following commands.
 ```sh
-sudo pacman -S rust postgresql postgis python-tensorflow opencv clang
+sudo pacman -S rust postgresql postgis gdal python-tensorflow opencv clang
 # Install sqlx-cli only for postgres
 cargo install sqlx-cli --no-default-features --features postgres
 ```
@@ -61,7 +62,7 @@ using the standard installation script. You could install all the development de
 the following commands.
 ```sh
 # sqlx-cli needs libssl-dev
-sudo apt install postgresql postgis curl libssl-dev libopencv-dev clang libclang-dev
+sudo apt install postgresql postgis curl libssl-dev libopencv-dev libgdal-dev clang libclang-dev
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # Install sqlx-cli only for postgres
@@ -78,7 +79,7 @@ pip install tensorflow
 If you are using macOS you could install all the development dependencies using [Homebrew](https://brew.sh)
 by running the following commands.
 ```sh
-brew install curl postgresql postgis python opencv llvm
+brew install curl postgresql postgis gdal python opencv llvm
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # Install sqlx-cli only for postgres
@@ -105,6 +106,9 @@ pip install tensorflow
 ```
 
 After installing PostgreSQL, remember to run the "StackBuilder" utility to install the PostGIS add-on.
+
+> GDAL on Windows requires manual installation or to use a tool like `vcpkg`.
+
 </details>
 
 ## Setup
