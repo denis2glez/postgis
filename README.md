@@ -94,7 +94,7 @@ pip install tensorflow
 <summary><b>Windows</b></summary>
 
 If you are using Windows, you could install most of the required dependencies using
-[`Chocolatey`](https://chocolatey.org) by running the following commands.
+[Chocolatey](https://chocolatey.org) by running the following commands.
 
 ```sh
 choco install rust-ms postgresql python opencv llvm
