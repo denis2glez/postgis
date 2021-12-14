@@ -17,8 +17,8 @@
 
 ## About
 
-A collection of demos, tests, and benchmarks for exploring Rust's support of geospatial data
-processing.
+A collection of demos, tests, and benchmarks for exploring Rust’s support of geospatial data processing, combined
+with Computer Vision and Machine Learning.
 
 ## Prerequisites
 
