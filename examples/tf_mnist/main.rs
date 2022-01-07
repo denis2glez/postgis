@@ -1,3 +1,6 @@
+use std::error::Error;
+use std::path::PathBuf;
+
 use anyhow::Result;
 use glob::glob;
 use image::io::Reader as ImageReader;
@@ -5,7 +8,7 @@ use image::*;
 use image::{self, imageops::FilterType};
 use serde::Serialize;
 use tensorflow::{
-    Graph, Operation, SavedModelBundle, SessionOptions, SessionRunArgs, Tensor,
+    Code, Graph, Operation, SavedModelBundle, SessionOptions, SessionRunArgs, Status, Tensor,
     DEFAULT_SERVING_SIGNATURE_DEF_KEY, PREDICT_INPUTS, PREDICT_OUTPUTS,
 };
 
@@ -89,8 +92,24 @@ impl MnistModel {
     }
 }
 
-fn main() -> Result<()> {
-    let model = MnistModel::from_dir("data/tf_mnist/saved_model")?;
+fn main() -> Result<(), Box<dyn Error>> {
+    let export_dir = "data/tf_mnist/saved_model";
+    let model_file: PathBuf = [export_dir, "saved_model.pb"].iter().collect();
+    if !model_file.exists() {
+        return Err(Box::new(
+            Status::new_set(
+                Code::NotFound,
+                &format!(
+                    "Run 'python examples/tf_mnist/create_model.py' to generate \
+                     {} and try again.",
+                    model_file.display()
+                ),
+            )
+            .unwrap(),
+        ));
+    }
+
+    let model = MnistModel::from_dir(export_dir)?;
 
     for entry in glob("data/tf_mnist/input/*.png")
         .expect("Failed to read input images from the data directory")
