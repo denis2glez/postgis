@@ -35,6 +35,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "anyhow"
+version = "1.0.52"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "84450d0b4a8bd1ba4144ce8ce718fbc5d071358b1e5384bace6536b3d1f2d5b3"
+
+[[package]]
 name = "approx"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1699,6 +1705,7 @@ dependencies = [
 name = "post-gis"
 version = "0.1.0"
 dependencies = [
+ "anyhow",
  "criterion",
  "dotenv",
  "flatgeobuf",
@@ -1708,10 +1715,12 @@ dependencies = [
  "geojson",
  "geos",
  "geozero 0.8.0",
+ "glob",
  "image",
  "opencv",
  "postgis",
  "seek_bufread",
+ "serde",
  "sqlx",
  "tensorflow",
  "tokio",

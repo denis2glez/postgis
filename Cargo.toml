@@ -18,6 +18,9 @@ tokio = { version = "1.15.0", features = ["full"] }
 flatgeobuf = "0.6.2"
 seek_bufread = "1.2.2"
 dotenv = "0.15.0"
+serde = "1.0.133"
+anyhow = "1.0.52"
+glob = "0.3.0"
 
 [dependencies.geozero]
 version = "0.8.0"
