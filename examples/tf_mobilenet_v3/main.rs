@@ -14,7 +14,7 @@ use image::io::Reader as ImageReader;
 use image::GenericImageView;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let export_dir = "data/tf_mobilenet_v3";
+    let export_dir = "data/tf_mobilenet_v3/saved_model";
     let model_file: PathBuf = [export_dir, "saved_model.pb"].iter().collect();
     if !model_file.exists() {
         return Err(Box::new(
@@ -32,7 +32,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     // Create input variables for our addition
     let mut x = Tensor::new(&[1, 224, 224, 3]);
-    let img = ImageReader::open("data/tf_mobilenet_v3/sample.png")?.decode()?;
+    let img = ImageReader::open("data/tf_mobilenet_v3/saved_model/sample.png")?.decode()?;
     for (i, (_, _, pixel)) in img.pixels().enumerate() {
         x[3 * i] = pixel.0[0] as f32;
         x[3 * i + 1] = pixel.0[1] as f32;

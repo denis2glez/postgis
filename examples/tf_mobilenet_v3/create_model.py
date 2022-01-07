@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import tensorflow as tf
 
 # default input shape 224x224x3
@@ -6,7 +8,7 @@ model = tf.keras.applications.MobileNetV3Small(
 )
 
 # save the model
-directory = "data/tf_mobilenet_v3"
+directory = "data/tf_mobilenet_v3/saved_model"
 model.save(directory, save_format="tf")
 
 ######################################################
