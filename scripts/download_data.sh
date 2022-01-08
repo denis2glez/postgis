@@ -9,6 +9,7 @@ if [ ! -d $DATA_DIR ]; then
     mkdir $DATA_DIR
 
     # Download the `data.zip` file from Google Drive which contains the following:
+    # - tf_mnist/input/*.png
     # - nyc_data.backup
     # - crnn.onnx
     # - alphabet_36.txt
